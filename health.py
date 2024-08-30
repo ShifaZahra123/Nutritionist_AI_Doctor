@@ -10,10 +10,10 @@ load_dotenv()
 # Configure Google Gemini API
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
-def upload_to_gemini(file_data, file_name, mime_type=None):
-    """Uploads the given file data to Gemini and returns the file object."""
+def upload_to_gemini(file_path, mime_type=None):
+    """Uploads the given file to Gemini and returns the file object."""
     # Upload the file to Gemini
-    file = genai.upload_file(data=file_data, display_name=file_name, mime_type=mime_type)
+    file = genai.upload_file(path=file_path, mime_type=mime_type)
     st.write(f"Uploaded file '{file.display_name}' as: {file.uri}")
     return file
 
@@ -51,7 +51,7 @@ def get_gemini_response(file, prompt):
 st.set_page_config(page_title="Gemini Health App")
 st.header("Gemini Health App")
 
-input_prompt =  """
+input_prompt = """
 You are an expert nutritionist. Analyze the food items in the image, calculate the total calories, 
 and provide details of each food item with its calorie intake in the following format:
 
@@ -72,12 +72,24 @@ submit = st.button("Tell me the total calories")
 # Handle submit button click
 if submit:
     if uploaded_file is not None:
-        # Directly pass the file data to the upload function
-        file_data = uploaded_file.getvalue()  # Get the byte content of the file
-        file = upload_to_gemini(file_data, file_name=uploaded_file.name, mime_type=uploaded_file.type)
+        # Ensure the temp directory exists
+        temp_dir = "temp"
+        if not os.path.exists(temp_dir):
+            os.makedirs(temp_dir)
+
+        # Save the uploaded file to the temp directory
+        temp_path = os.path.join(temp_dir, uploaded_file.name)
+        with open(temp_path, "wb") as f:
+            f.write(uploaded_file.getbuffer())
+        
+        # Upload the image and get a response
+        file = upload_to_gemini(temp_path, mime_type=uploaded_file.type)
         response = get_gemini_response(file, input_prompt)
         
         st.subheader("The Response is")
         st.write(response)
+        
+        # Clean up the temporary file
+        os.remove(temp_path)
     else:
         st.error("Please upload an image first.")
