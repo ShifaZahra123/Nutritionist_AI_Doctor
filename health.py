@@ -48,8 +48,8 @@ def get_gemini_response(file, prompt):
     return response.text
 
 # Streamlit app setup
-st.set_page_config(page_title="Gemini Health App")
-st.header("Gemini Health App")
+st.set_page_config(page_title="Calorie Advisor App")
+st.header("Calorie Advisor App")
 
 input_prompt = """
 You are an expert nutritionist. Analyze the food items in the image, calculate the total calories, 
@@ -59,6 +59,7 @@ and provide details of each food item with its calorie intake in the following f
 2. Item 2 - no of calories
 ----
 ----
+Finally you can also mention whether the food is healthy or notand also mention the percentage split of the ratio of carbohydrates, fats, fibres, sugar and other important things required in our diet
 """
 
 # File uploader
