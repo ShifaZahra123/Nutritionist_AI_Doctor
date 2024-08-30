@@ -10,18 +10,12 @@ load_dotenv()
 # Configure Google Gemini API
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
-def upload_to_gemini(uploaded_file):
+def upload_to_gemini(file_path, mime_type=None):
     """Uploads the given file to Gemini and returns the file object."""
-    if uploaded_file is not None:
-        bytes_data = uploaded_file.getvalue()
-        mime_type = uploaded_file.type
-
-        # Upload the file to Gemini
-        file = genai.upload_file(path=uploaded_file.name, mime_type=mime_type, data=bytes_data)
-        st.write(f"Uploaded file '{file.display_name}' as: {file.uri}")
-        return file
-    else:
-        raise FileNotFoundError("No file uploaded")
+    # Upload the file to Gemini
+    file = genai.upload_file(path=file_path, mime_type=mime_type)
+    st.write(f"Uploaded file '{file.display_name}' as: {file.uri}")
+    return file
 
 def get_gemini_response(file, prompt):
     """Generates a response from the Gemini model using the uploaded image and prompt."""
@@ -78,11 +72,19 @@ submit = st.button("Tell me the total calories")
 # Handle submit button click
 if submit:
     if uploaded_file is not None:
+        # Save the uploaded file to a temporary path
+        temp_path = os.path.join("temp", uploaded_file.name)
+        with open(temp_path, "wb") as f:
+            f.write(uploaded_file.getbuffer())
+        
         # Upload the image and get a response
-        file = upload_to_gemini(uploaded_file)
+        file = upload_to_gemini(temp_path, mime_type=uploaded_file.type)
         response = get_gemini_response(file, input_prompt)
         
         st.subheader("The Response is")
         st.write(response)
+        
+        # Clean up the temporary file
+        os.remove(temp_path)
     else:
         st.error("Please upload an image first.")
