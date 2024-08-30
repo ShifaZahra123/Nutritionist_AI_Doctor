@@ -52,13 +52,23 @@ st.set_page_config(page_title="Gemini Health App")
 st.header("Gemini Health App")
 
 input_prompt = """
-You are an expert nutritionist. Analyze the food items in the image, calculate the total calories, 
-and provide details of each food item with its calorie intake in the following format:
+You are an expert nutritionist. Please analyze the food items in the image, and provide a detailed breakdown of the calorie content for each food item. Ensure that the response includes the following information:
 
-1. Item 1 - no of calories
-2. Item 2 - no of calories
-----
-----
+1. List each food item with its name and calorie content.
+2. Provide a total calorie count for all items combined.
+3. Avoid vague statements, and if quantities are unclear, assume typical portion sizes.
+
+Example response format:
+
+1. Chicken Biryani - 600 calories
+2. Mutton Curry - 300 calories
+3. Egg Curry - 150 calories
+4. Potato Fry - 200 calories
+5. Raita - 100 calories
+6. Banana - 100 calories
+7. Buttermilk - 50 calories
+
+Total calories: 1500 calories
 """
 
 # File uploader
