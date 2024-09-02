@@ -50,7 +50,6 @@ def get_gemini_response(file, prompt):
 # Streamlit app setup
 st.set_page_config(page_title="Calorie Advisor App")
 st.header("Calorie Advisor App")
-input=st.text_input("Input Prompt: ",key="input")
 
 input_prompt = """
 You are an expert nutritionist. Analyze the food items in the image, calculate the total calories, 
