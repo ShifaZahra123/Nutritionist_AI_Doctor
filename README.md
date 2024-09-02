@@ -2,7 +2,7 @@
 
 [![Streamlit](https://img.shields.io/badge/Framework-Streamlit-FF4B4B)](https://streamlit.io/)
 ![Language](https://img.shields.io/badge/Language-Python-79FFB2)
-[![Model](https://img.shields.io/badge/Model-Gemini%20v1.5--flash-FF8C00)](https://ai.google.dev/)
+[![Model](https://img.shields.io/badge/Model-Gemini%20v1.5--flash-FF8C00)](https://ai.google.dev/gemini-api/docs/models/gemini#gemini-1.5-flash)
 [![API](https://img.shields.io/badge/API-Google%20Generative%20AI-0000FF)](https://ai.google.dev/)
 
 ## Project Name: **Calorie Advisor App**
