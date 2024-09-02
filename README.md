@@ -5,7 +5,7 @@
 [![Model](https://img.shields.io/badge/Model-Gemini%20v1.5--flash-FF8C00)](https://ai.google.dev/gemini-api/docs/models/gemini#gemini-1.5-flash)
 [![API](https://img.shields.io/badge/API-Google%20Generative%20AI-0000FF)](https://ai.google.dev/)
 
-## Project Name: **Calorie Advisor App**
+## Project Name: **[Calorie Advisor App](https://nutritionistaidoctor-dwfpysu9ddohtx8sytmjew.streamlit.app/)**
 
 The **Calorie Advisor App** is a web application developed using Streamlit and Google Generative AI's Gemini model. The app allows users to upload an image of food items, and it provides detailed nutritional analysis, including calorie counts and health assessments.
 
@@ -14,7 +14,11 @@ The **Calorie Advisor App** is a web application developed using Streamlit and G
 2. **Nutritional Analysis**: Get a detailed breakdown of calories and a health assessment based on the food items in the image.
 3. **Google Gemini API Integration**: Utilizes Google Generative AI's Gemini model to analyze the food image and generate nutritional insights.
 
-## How to Use the Application
+## Live Demo 🌐🌏
+
+You can explore Gemma Model Document Q&A in action through live demo hosted at [https://nutritionistaidoctor-dwfpysu9ddohtx8sytmjew.streamlit.app/](https://nutritionistaidoctor-dwfpysu9ddohtx8sytmjew.streamlit.app/). Feel free to check it out.
+
+## How to Use the Web Application
 1. Open the application using Streamlit.
 2. Upload an image of the food items you want to analyze.
 3. Click on the "Tell me the total calories" button.
