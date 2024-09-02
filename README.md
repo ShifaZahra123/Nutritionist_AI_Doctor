@@ -24,6 +24,9 @@ You can explore Gemma Model Document Q&A in action through live demo hosted at [
 3. Click on the "Tell me the total calories" button.
 4. The application will display the total calories, a breakdown of each food item, and additional nutritional details.
 
+## Sample Application Workflow
+![Workflow](Sample_Images/Calorie_App.png)****
+
 ## Installation
 To set up the application locally, follow these steps:
 
@@ -53,6 +56,3 @@ To set up the application locally, follow these steps:
    ```sh
    streamlit run app.py
    ```
-
-## Sample Application Workflow
-![Workflow](Sample_Images/Calorie_App.png)
